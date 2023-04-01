@@ -1,0 +1,52 @@
+<section id="fabric_demo" phx-hook="Fabric">
+    <input type="file" id="file-to-upload" accept="application/pdf" />   
+    <div class="pdf-buttons">
+      <div id="page-count-container" phx-update="ignore">PDF Page 
+          <div id="pdf-current-page"></div> of 
+          <div id="pdf-total-pages"></div>
+      </div>
+      <button id="upload-pdf">Upload PDF</button>
+      <button id="draw-mode">Draw Mode</button>
+      <ul>
+      <li><small>Delete selected object using Del key</small></li>
+      <li><small>Move selected object using mouse or arrow keys. Shift-arrow increases move rate</small></li>
+      <li><small>You can rotate, move and scale selected object</small></li>
+      </ul>
+    </div>
+    <div id="pdf-main-container" phx-update="ignore">
+      <div id="pdf-loader">Loading document ...</div>
+      <div id="pdf-contents">
+        <canvas id="pdf-canvas" width="800"></canvas>
+        <div id="text-layer" class="textLayer" style="display: none;"></div>
+        <div id="annotation-layer" style="display: none;"></div>
+        <div id="page-loader">Loading page ...</div>
+      </div>
+      <div id="canvasContainer">
+        <span class="tooltiptext" id="tooltip-span"></span>
+        <canvas id="fabricCanvas"></canvas>
+      </div>      
+    </div>
+    <div id="draw-properties" phx-update="ignore">
+        <div id="draw-palette" class="__range __range-step" style="border:1px solid dimgray; width:220px;">
+            <svg id="drawCanvas" height="314" width="220"></svg>
+            <label for="drawWidth" style="margin-left:10px;"><b>Thickness</b></label>
+            <input type="range" min="2" max="25" value="20" class="slider" id="drawWidth" list="drawTicks" style="margin: 0 auto; width: 195px;">
+            <datalist id="drawTicks">
+                <option style="
+                    font-size: small;
+                    font-weight: bold;
+                    margin-left:10px;
+                ">Thin</option>
+                <option style="
+                    font-size: small;
+                    margin-left: 108px;
+                    font-weight: bold;
+                ">Thick</option>
+            </datalist>
+        </div>
+    </div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.14.305/build/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.14.305/build/pdf.worker.js"></script>
+<script src="https://unpkg.com/pdf-lib@1.17.1"></script>
